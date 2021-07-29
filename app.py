@@ -97,6 +97,16 @@ def update_collection(collection,member):
     res = make_response(jsonify({"error":"collection not found"}),400)
     return res
 
+@app.route("/json/<collection>", methods=["DELETE"])
+def delete_collection(collection):
+    
+    if collection in INFO:
+        del INFO[collection]
+        res = make_response(jsonify(INFO),200)
+        return res
+    
+    res = make_response(jsonify({"error":"collection not found"}),400)
+    return res
 
 if __name__ == "__main__":
     print("Serving running in port%s"%(PORT))
