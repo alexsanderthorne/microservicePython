@@ -53,7 +53,7 @@ def get_json():
     res = make_response(jsonify(INFO),200)
     return res 
 
-@app.route("/json/<collection>/<member>")
+@app.route("/json/<collection>/<member>",methods=['GET'])
 def get_data(collection,member):
     if collection in INFO:
         member = INFO[collection].get(member)
@@ -109,7 +109,7 @@ def delete_collection(collection):
     return res
 
 if __name__ == "__main__":
-    print("Serving running in port%s"%(PORT))
-    app.run(host=HOST, port=PORT)
+    print("Serving running in port %s"%PORT)
+    app.run(host=HOST,port=PORT)
             
             
